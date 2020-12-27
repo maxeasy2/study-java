@@ -9,7 +9,7 @@ public class Quick {
         int i = start+1;
         int j = end;
         int key = start;
-        int temp;
+
 
         while (i <= j) {
             while (i <= end && array[i] <= array[key]) {
@@ -21,17 +21,19 @@ public class Quick {
             }
 
             if (i > j) {
-                temp = array[j];
-                array[j] = array[key];
-                array[key] = temp;
+                swap(array, j, key);
             } else {
-                temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                swap(array, i, j);
             }
             quickSort(array, start, j - 1);
             quickSort(array, j + 1, end);
         }
+    }
+
+    public static void swap(int[] array, int value1, int value2){
+        int temp = array[value1];
+        array[value1] = array[value2];
+        array[value2] = temp;
     }
 
     public static void main(String[] args) {
